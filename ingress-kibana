@@ -1,0 +1,17 @@
+# from v1.14 of k8s
+# apiVersion: networking.k8s.io/v1beta1
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: kibana-routing
+  namespace: kube-system
+spec:
+  rules:
+    - host: kibana.cloudadvocacy.com
+      http:
+        paths:
+          - path: /
+            backend:
+              serviceName: kibana-logging
+              servicePort: 5601
+
